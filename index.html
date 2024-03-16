@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Embedded PPT and PDF</title>
+    <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
+    <script>
+        // Initialize PDF.js
+        var url = "./Redesign of a spark gap switch assy presentation.pdf";
+        pdfjsLib.getDocument(url).promise.then(function(pdf) {
+          pdf.getPage(1).then(function(page) {
+            var canvas = document.getElementById('pdfCanvas');
+            var context = canvas.getContext('2d');
+            var viewport = page.getViewport({scale: 1.5});
+      
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+      
+            var renderContext = {
+              canvasContext: context,
+              viewport: viewport
+            };
+            page.render(renderContext);
+          });
+        });
+      </script>
+</head>
+
+<body>
+    <!-- <canvas id="pdfCanvas"></canvas> -->
+    <iframe src="./Redesign of a spark gap switch assy presentation.pdf" width="100%" height="450" allow="autoplay"></iframe>
+    <iframe src="./Final project Report- 8.6.22-.pdf" width="100%" height="450" allow="autoplay"></iframe>
+    <iframe src="./Redesign of a spark gap switch assy.pdf" width="100%" height="450" allow="autoplay"></iframe>
+</body>
+
+</html>
